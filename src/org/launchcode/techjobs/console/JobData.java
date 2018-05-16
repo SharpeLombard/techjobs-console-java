@@ -83,6 +83,28 @@ public class JobData {
 
         return jobs;
     }
+    //(RSL) Adding lines for findByValue method, a new (public static) method that will
+    // search for a String within each of the columns
+
+    public static ArrayList<HashMap<String, String>> findByValue(String value){
+
+        value = value;
+
+        loadData();
+
+        ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
+
+        for (HashMap<String, String> job : allJobs){
+            for(String key : job.keySet()){
+                if (job.get(key).contains(value)){
+                    jobs.add(job);
+                    break;
+                }
+            }
+        }
+        return jobs;
+    }
+
 
     /**
      * Read in data from a CSV file and store it in a list
